@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Астронг</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]--> 
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-31485994-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-31485994-5');
+    </script>
+</head>
+<body>
+<!-- START CONTENT  -->
+
+<div class="container">
+    <section class="header">
+        <a href="/" class="header__logo"><img src="img/logo.svg" alt=""></a>
+        <p class="header__addr">г. Кунгур, Плехановский тракт, 4 км</p>
+        <a href="tel:+73427127208" class="header__phone">+7 (34271) <span>2-72-08</span></a>
+    </section>
+
+    <section class="navigation">
+        <nav class="navigation__nav">
+            <a href="javascript:void(0)" data-tab="main">Главная</a>
+            <a href="javascript:void(0)" class="active" data-tab="graphics">Графики</a>
+            <a href="javascript:void(0)" data-tab="documents">Документы</a>
+            <a href="javascript:void(0)" data-tab="contacts">Контакты</a>
+        </nav>
+        <a href="javascript:void(0)" class="btn navigation__btn" data-modal="request">Оставить заявку</a>
+    </section>
+
+    <section class="main">
+        <div class="main__item" data-tab="main">
+            <h2>Оформите заявку на вывоз ТКО прямо на сайте</h2>
+
+            <div class="form">
+                <div class="form__header">
+                    <div class="form__nav">
+                        <a href="javascript:void(0)" data-form="uri" class="active">Для юридических лиц</a>
+                        <a href="javascript:void(0)" data-form="phy">Для физических лиц</a>
+                    </div>
+                    <div class="form__addr">
+                        <span>или отправьте запрос на почту:</span> <br>
+                        <a href="mailto:zayavka@astrong.info">zayavka@astrong.info</a>
+                    </div>
+                </div>
+
+                <div class="form__body active" data-form="uri">
+                    <form action="">
+                        <div class="flex">
+                            <div class="form__col">
+                                <input type="text" placeholder="Наименование организации">
+    
+                                <div>
+                                    <input type="text" placeholder="ИНН">
+                                    <input type="text" placeholder="Телефон">
+                                </div>
+                            </div>
+                            <div class="form__col">
+                                <input type="text" placeholder="Адрес">
+                                <input type="text" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <textarea placeholder="Комментарий"></textarea>
+
+                        <div class="flex">
+                            <a href="javascript:void(0)" class="btn btn-gray">+ Загрузить изображение</a>
+                            <a href="javascript:void(0)" class="btn btn-black">Оформить заявку</a>
+                        </div>
+
+                        <p class="form__desc">Вы можете загрузить не более 5 документов в форматах: doc, docx, xls, xlsx, pdf, txt, png, jpeg</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="main__item active" data-tab="graphics">
+            <h2>Графики вывоза ТКО</h2>
+
+            <div class="main__files">
+                <a href="docs/berezovskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Березовское СП</span>
+                </a>
+                <a href="docs/berezovskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Березовское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/goldirevsoke-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Голдыревское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/ergachinskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ергачинское СП</span>
+                </a>
+                <a href="docs/ergachinskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ергачинское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/zarubinskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Зарубинское СП</span>
+                </a>
+                <a href="docs/zarubinskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Зарубинское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/kalilinskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Калининское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/komsomolskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Комсомольское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/kilasovskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Кыласовское СП</span>
+                </a>
+                <a href="docs/kilasovskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Кыласовское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/lenskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ленское СП</span>
+                </a>
+                <a href="docs/lenskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ленское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/mazuninskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Мазунинское СП (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/ordinskoe.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ординское СП</span>
+                </a>
+                <a href="docs/ordinskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Ординское сп (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/suksunskiy.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Суксунский сп</span>
+                </a>
+                <a href="docs/suksunskiy-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Суксунское сп (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/ustturskoe-2.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Усть-Турское сп (децентрализованный сбор)</span>
+                </a>
+                <a href="docs/license.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Лицензия</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="main__item" data-tab="documents">
+            <div class="main__files">
+                <a href="docs/inn.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>ИНН</span>
+                </a>
+                <a href="docs/card.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Карточка предприятия</span>
+                </a>
+                <a href="docs/ustav.pdf" target="_blank" class="main__file">
+                    <img src="img/pdf.svg" alt="">
+                    <span>Устав</span>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <img src="img/car.svg" alt="" class="car">
+        <div>ООО «Астронг» <br>
+            617475, Пермский край, г. Кунгур, Плехановский тракт, 4 км</div>
+        <div><a class="tel" href="tel:+73427127208">+7 (34271) 2-72-08</a></div>
+        <div><a href="mailto:astrong.kungur@gmail.com">astrong.kungur@gmail.com</a></div>
+    </div>
+</footer>
+
+<!-- END CONTENT  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
