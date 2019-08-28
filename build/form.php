@@ -16,14 +16,14 @@ $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, 
 $mail->Port = 465; // TCP port to connect to / этот порт может отличаться у других провайдеров
 
 $mail->setFrom('phpmails@yandex.ru'); // от кого будет уходить письмо?
-$mail->addAddress('lecaw@yandex.ru');     // Кому будет уходить письмо 
+$mail->addAddress('zayavka@astrong.info');     // zayavka@astrong.info  Кому будет уходить письмо 
 //$mail->addAddress('ellen@example.com');               // Name is optional
 //$mail->addReplyTo('info@example.com', 'Information');
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
 //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-$mail->isHTML(true);                                  // Set email format to HTML
+$mail->isHTML(true);  
 
 if ($_POST['hide'] === 'uri') {
     $mail->Subject = 'Заявка юр. лица на вывоз ТКО с сайта Астронг';
@@ -39,6 +39,8 @@ if ($_POST['hide'] === 'questions') {
     $mail->Subject = 'Заявка с сайта Астронг';
     $mail->Body    = 'Имя: ' . $_POST['name'] . ', Телефон: ' . $_POST['phone'] . ', Телефон: ';
 }
+
+$mail->AddAttachment($_FILES['attachfile']['tmp_name'], $_FILES['attachfile']['name']); 
 
 $mail->AltBody = '';
 
