@@ -23,17 +23,27 @@ $('body').on('click', '.navigation__btn', () => {
 $('body').on('submit', 'form', (e) => {
     e.preventDefault();
 
+    var form = null;
+    var fd = null;
+
     if ($(e.currentTarget).hasClass('uri')) {
+        form = document.querySelector('form.uri');
+        fd = new FormData(form);
+
         if ($('.uri input[name="organization"]').val() !== '' && $('.uri input[name="address"]').val() !== '' && $('.uri input[name="inn"]').val() !== '' && $('.uri input[name="phone"]').val() !== '' && $('.uri input[name="email"]').val() !== '') {
             $.ajax({
                 type: "POST",
                 url: "../form.php",
-                data: $(e.currentTarget).serialize(),
+                contentType: false,
+                processData: false,
+                data: fd,
                 success: () => {
                     $('.modal').removeClass('active');
                     $('.modals').addClass('active');
                     $('.modal.success').addClass('active');
-                }					
+                    $('input').val('');
+                    $('textarea').val('');
+                }
             });
         } else {
             if ($('.uri input[name="organization"]').val() === '') {
@@ -57,15 +67,22 @@ $('body').on('submit', 'form', (e) => {
             }
         }
     } else if ($(e.currentTarget).hasClass('phy')) {
+        form = document.querySelector('form.phy');
+        fd = new FormData(form);
+
         if ($('.phy input[name="fio"]').val() !== '' && $('.phy input[name="address"]').val() !== '' && $('.phy input[name="phone"]').val() !== '' && $('.phy input[name="email"]').val() !== '') {
             $.ajax({
                 type: "POST",
                 url: "../form.php",
-                data: $(e.currentTarget).serialize(),
+                contentType: false,
+                processData: false,
+                data: fd,
                 success: () => {
                     $('.modal').removeClass('active');
                     $('.modals').addClass('active');
                     $('.modal.success').addClass('active');
+                    $('input').val('');
+                    $('textarea').val('');
                 }					
             });
         } else {
@@ -94,7 +111,9 @@ $('body').on('submit', 'form', (e) => {
                 $('.modal').removeClass('active');
                 $('.modals').addClass('active');
                 $('.modal.success').addClass('active');
-            }					
+                $('input').val('');
+                $('textarea').val('');
+            }
         });
     }
 });

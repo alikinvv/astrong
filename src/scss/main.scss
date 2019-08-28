@@ -97,6 +97,16 @@ textarea {
 	font-weight: 500;
 	border: 0;
 	cursor: pointer;
+	transition: all .2s ease-in-out;
+
+	&:hover,
+	&:focus {
+		outline: none;
+	}
+
+	&:hover {
+		box-shadow: 0px 13px 13px -7px rgba(0,0,0,.3);
+	}
 
 	&-gray {
 		background-color: #dcdcdc;
@@ -704,6 +714,7 @@ textarea {
 	align-items: center;
 	justify-content: center;
 	display: none;
+	z-index: 3;
 
 	&.active {
 		display: flex;
@@ -751,6 +762,10 @@ textarea {
 }
 
 .file {
+	@include r(767) {
+		width: 100%;
+	}
+
 	position: relative;
 	cursor: pointer;
 	width: 300px;
