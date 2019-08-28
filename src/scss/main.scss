@@ -10,11 +10,17 @@
 }
 
 body {
+	@include r(1399) {
+		background: #fff;
+	}
+
 	font-family: 'Panton';
 	font-size: 14px;
 	color: #424242;
 	background: url('../img/city.svg') no-repeat center bottom;
 	background-size: 101.2%;
+	overflow-x: hidden;
+	position: relative;
 }
 
 a {
@@ -23,6 +29,10 @@ a {
 }
 
 h2 {
+	@include r(767) {
+		font-size: 18px;
+	}
+
 	font-size: 24px;
 	font-weight: bold;
 	margin: 0 0 20px;
@@ -43,6 +53,15 @@ input {
 	&:hover,
 	&:focus {
 		outline: none;
+	}
+
+	&.error {
+		background: #ffcfcf;
+		border: 1px solid red;
+
+		&::placeholder {
+			color: red;
+		}
 	}
 }
 
@@ -76,6 +95,8 @@ textarea {
 	display: inline-block;
 	padding: 5px 10px;
 	font-weight: 500;
+	border: 0;
+	cursor: pointer;
 
 	&-gray {
 		background-color: #dcdcdc;
@@ -91,11 +112,19 @@ textarea {
 }
 
 .container {
+	@include r(1279) {
+		padding: 0 10px;
+	}
+
 	max-width: 1165px;
 	margin: 0 auto;
 }
 
 .header {
+	@include r(767) {
+		border-bottom: 1px solid #e8e8e8;
+	}
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -104,16 +133,33 @@ textarea {
 
 	&__logo {
 		img {
+			@include r(767) {
+				width: 100px;
+			}
+
 			width: 121px;
 		}
 	}
 
 	&__addr {
+		@include r(767) {
+			display: none;
+		}
+
 		margin: 0;
 		font-size: 18px;
 	}
 
 	&__phone {
+		@include r(1023) {
+			font-size: 26px;
+		}
+
+		@include r(767) {
+			font-size: 18px;
+		}
+
+
 		font-size: 30px;
 		letter-spacing: 0.42px;
 
@@ -125,13 +171,33 @@ textarea {
 }
 
 .navigation {
+	@include r(1023) {
+		flex-direction: column;
+	}
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 21px 0 17px;
 
 	&__nav {
+		@include r(1023) {
+			margin-bottom: 25px;
+		}
+
+		@include r(767) {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
 		a {
+			@include r(767) {
+				font-size: 16px;
+				margin-right: 0;
+			}
+
 			font-size: 20px;
 			margin-right: 73px;
 			position: relative;
@@ -165,6 +231,11 @@ textarea {
 	}
 
 	&__btn {
+		@include r(767) {
+			padding: 7px 24px;
+			font-size: 16px;
+		}
+
 		padding: 14px 44px;
 		font-weight: bold;
 		font-size: 18px;
@@ -172,6 +243,16 @@ textarea {
 }
 
 .main {
+	@include r(1279) {
+		margin: 0 -10px 120px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	@include r(1023) {
+		margin-bottom: 173px;
+	}
+
 	background: #eaeaea;
 	padding: 33px 50px;
 	margin-bottom: 232px;
@@ -183,18 +264,98 @@ textarea {
 			flex-direction: column;
 		}
 
+		&[data-tab="contacts"] {
+			&.active {
+				@include r(767) {
+					display: block !important;
+				}
+			}
+
+			justify-content: space-between;
+
+			img {
+				@include r(1279) {
+					width: 100%;
+				}
+
+				pointer-events: none;
+				user-select: none;
+				margin-top: 20px;
+				border: 2px solid #fff;
+			}
+
+			.col {
+				@include r(1279) {
+					width: 49%;
+				}
+
+				@include r(767) {
+					width: 100%;
+					margin-bottom: 80px;
+				}
+
+				width: 50%;
+
+				.addr {
+					margin-top: 20px;
+					display: flex;
+					flex-direction: column;
+
+					a {
+						font-size: 18px;
+
+						&:hover {
+							text-decoration: underline;
+						}
+
+						&.tel {
+							font-size: 26px;
+							font-weight: bold;
+							margin-bottom: 10px;
+						}
+					}
+				}
+
+				p {
+					@include r(1279) {
+						font-size: 15px;
+					}
+
+					font-size: 16px;
+
+					strong {
+						font-size: 20px;
+					}
+				}
+			}
+
+			&.active {
+				display: flex;
+			}
+		}
+
 		&.active {
 			display: block;
 		}
 	}
 
 	&__files {
+		@include r(767) {
+			justify-content: space-between;
+			overflow: hidden;
+		}
+
 		display: flex;
 		flex-wrap: wrap;
 		margin-top: 40px;
 	}
 
 	&__file {
+		@include r(767) {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
 		display: flex;
 		align-items: center;
 		width: 50%;
@@ -205,11 +366,19 @@ textarea {
 		}
 
 		img {
+			@include r(767) {
+				width: 26px;
+			}
+
 			width: 46px;
 			margin-right: 20px;
 		}
 
 		span {
+			@include r(767) {
+				font-size: 14px;
+			}
+
 			font-size: 18px;
 		}
 	}
@@ -223,7 +392,26 @@ textarea {
 	}
 
 	&__nav {
+		@include r(767) {
+			display: flex;
+			justify-content: space-between;
+			width: 100%;
+		}
+
 		a {
+			@include r(1023) {
+				padding: 14px 20px;
+				font-size: 16px;
+			}
+
+			@include r(767) {
+				font-size: 13px;
+				padding-left: 0;
+				padding-right: 0;
+				width: 50%;
+				text-align: center;
+			}
+
 			background-color: #d3e099;
 			text-transform: uppercase;
 			transition: all .2s ease-in-out;
@@ -244,11 +432,19 @@ textarea {
 	}
 
 	&__addr {
+		@include r(767) {
+			display: none;
+		}
+
 		font-weight: 500;
 		font-size: 16px;
 		text-align: right;
 
 		a {
+			@include r(1023) {
+				font-size: 16px;
+			}
+
 			font-weight: bold;
 			text-decoration: underline;
 			font-size: 20px;
@@ -261,17 +457,38 @@ textarea {
 	}
 
 	&__body {
+		@include r(1023) {
+			padding: 32px 20px 22px;
+		}
+
+		@include r(767) {
+			padding: 20px 10px 22px;
+		}
+
 		background-color: #bfd84a;
 		padding: 42px 51px 22px;
+		display: none;
+
+		&.active {
+			display: block;
+		}
 	}
 
 	.flex {
+		@include r(767) {
+			display: block;
+		}
+
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 	}
 
 	&__col {
+		@include r(767) {
+			width: 100%;
+		}
+
 		width: 49%;
 
 		input {
@@ -281,27 +498,50 @@ textarea {
 		}
 
 		div {
+			@include r(767) {
+				display: block;
+			}
+
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 
 			input {
+				@include r(767) {
+					width: 100%;
+				}
+
 				width: 48%;
 			}
 		}
 	}
 
 	textarea + .flex {
+		@include r(1023) {
+			margin-top: 12px;
+		}
+
 		margin-top: 35px;
 	}
 
 	.btn-gray {
+		@include r(767) {
+			width: 100%;
+			text-align: center;
+		}
+
 		font-size: 16px;
 		text-transform: initial;
 		padding: 10px 34px;
 	}
 
 	.btn-black {
+		@include r(767) {
+			width: 100%;
+			text-align: center;
+			margin-top: 15px;
+		}
+
 		text-transform: uppercase;
 		font-size: 16px;
 		padding: 16px 55px;
@@ -322,12 +562,24 @@ textarea {
 	}
 
 	.container {
+		@include r(767) {
+			display: block;
+		}
+
 		display: flex;
 		align-items: center;
 		font-size: 12px;
 		position: relative;
 
+		a:hover {
+			text-decoration: underline;
+		}
+
 		.car {
+			@include r(1279) {
+				display: none;
+			}
+
 			position: absolute;
 			bottom: 10px;
 			right: -23%;
@@ -337,11 +589,199 @@ textarea {
 		}
 
 		div {
+			@include r(767) {
+				margin: 0 0 10px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
 			margin-right: 69px;
 
 			&:last-child {
 				margin-right: 0;
 			}
 		}
+	}
+}
+
+.questions {
+	@include r(1279) {
+		height: initial;
+		padding: 25px 0;
+	}
+
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 289px;
+	background-color: #cbdb3d;
+	background-image: linear-gradient(to bottom, #cbdb3d 0%, #94ac10 100%);
+	z-index: 1;
+	padding: 70px 0;
+
+	h2 {
+		@include r(1023) {
+			font-size: 21px;
+		}
+
+		@include r(767) {
+			font-size: 18px;
+		}
+
+		text-transform: uppercase;
+		font-size: 30px;
+		font-weight: normal;
+	}
+
+	p {
+		@include r(1279) {
+			margin-bottom: 0;
+		}
+
+		@include r(1023) {
+			font-size: 14px;
+		}
+
+		font-size: 16px;
+
+		a {
+			text-decoration: underline;
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.flex {
+		@include r(767) {
+			display: block;
+		}
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 30px;
+
+		input {
+			@include r(767) {
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			width: 32.5%;
+			height: 50px;
+		}
+
+		button {
+			@include r(767) {
+				width: 100%;
+			}
+
+			width: 32.5%;
+			height: 50px;
+			background-color: #e2e2e2;
+			border-radius: 2px;
+			font-size: 20px;
+			border: 0;
+			color: #424242;
+			font-weight: 500;
+			cursor: pointer;
+		}
+	}
+}
+
+.modals {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(#000, 0.7);
+	align-items: center;
+	justify-content: center;
+	display: none;
+
+	&.active {
+		display: flex;
+	}
+}
+
+.modal {
+	background: #fff;
+	text-align: center;
+	width: 400px;
+	transition: all .2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+	transform: scale(.5);
+	transition-delay: 200ms;
+	opacity: 0;
+
+	&.active {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	&__body {
+		padding: 32px 34px 20px;
+	}
+
+	img {
+		width: 74px;
+	}
+
+	p {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	.btn {
+		width: 100%;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: bold;
+		color: #434242;
+		padding: 15px 0;
+		border-radius: 0;
+		background-color: #cbdb3d;
+		background-image: linear-gradient(to top, #cbdb3d 0%, #d3e099 100%);
+	}
+}
+
+.file {
+	position: relative;
+	cursor: pointer;
+	width: 300px;
+
+	input {
+		width: 100%;
+		cursor: pointer !important;
+	}
+
+	p {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		text-transform: uppercase;
+		background-color: #dcdcdc;
+		background-image: linear-gradient(to bottom, #efefef 0%, #c5c5c5 100%);
+		color: #303030;
+		border: 1px solid #b6b6b6;
+		border-radius: 2px;
+		display: inline-block;
+		padding: 5px 10px;
+		font-weight: 500;
+		border: 0;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+		pointer-events: none;
+		user-select: none;
 	}
 }

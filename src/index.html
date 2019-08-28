@@ -10,8 +10,8 @@
 
     <section class="navigation">
         <nav class="navigation__nav">
-            <a href="javascript:void(0)" data-tab="main">Главная</a>
-            <a href="javascript:void(0)" class="active" data-tab="graphics">Графики</a>
+            <a href="javascript:void(0)" class="active" data-tab="main">Главная</a>
+            <a href="javascript:void(0)" data-tab="graphics">Графики</a>
             <a href="javascript:void(0)" data-tab="documents">Документы</a>
             <a href="javascript:void(0)" data-tab="contacts">Контакты</a>
         </nav>
@@ -19,7 +19,7 @@
     </section>
 
     <section class="main">
-        <div class="main__item" data-tab="main">
+        <div class="main__item active" data-tab="main">
             <h2>Оформите заявку на вывоз ТКО прямо на сайте</h2>
 
             <div class="form">
@@ -35,27 +35,59 @@
                 </div>
 
                 <div class="form__body active" data-form="uri">
-                    <form action="">
+                    <form class="uri">
                         <div class="flex">
                             <div class="form__col">
-                                <input type="text" placeholder="Наименование организации">
+                                <input name="organization" required type="text" placeholder="Наименование организации">
     
                                 <div>
-                                    <input type="text" placeholder="ИНН">
-                                    <input type="text" placeholder="Телефон">
+                                    <input name="inn" required type="text" placeholder="ИНН">
+                                    <input name="phone" required type="text" placeholder="Телефон">
                                 </div>
                             </div>
-                            <div class="form__col">
-                                <input type="text" placeholder="Адрес">
-                                <input type="text" placeholder="Email">
+                            <div class="form__col"> 
+                                <input name="address" required type="text" placeholder="Адрес">
+                                <input name="email" required type="text" placeholder="Email">
                             </div>
                         </div>
 
-                        <textarea placeholder="Комментарий"></textarea>
+                        <input type="hidden" name="hide" value="uri">
+                        <textarea name="comment" placeholder="Комментарий"></textarea>
 
                         <div class="flex">
-                            <a href="javascript:void(0)" class="btn btn-gray">+ Загрузить изображение</a>
-                            <a href="javascript:void(0)" class="btn btn-black">Оформить заявку</a>
+                            <div class="file">
+                                <input type="file" multiple name="attachfile" class="btn btn-gray">
+                                <p>+ Загрузить изображение</p>
+                            </div>
+                            <button type="submit" class="btn btn-black">Оформить заявку</button>
+                        </div>
+
+                        <p class="form__desc">Вы можете загрузить не более 5 документов в форматах: doc, docx, xls, xlsx, pdf, txt, png, jpeg</p>
+                    </form>
+                </div>
+
+                <div class="form__body" data-form="phy">
+                    <form class="phy">
+                        <div class="flex">
+                            <div class="form__col">
+                                <input name="fio" required type="text" placeholder="ФИО">
+                                <input name="phone" required type="text" placeholder="Телефон">
+                            </div>
+                            <div class="form__col">
+                                <input name="address" required type="text" placeholder="Адрес">
+                                <input name="email" required type="text" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="hide" value="phy">
+                        <textarea name="comment" placeholder="Комментарий"></textarea>
+
+                        <div class="flex">
+                            <div class="file">
+                                <input type="file" multiple name="attachfile" class="btn btn-gray">
+                                <p>+ Загрузить изображение</p>
+                            </div>
+                            <button type="submit" class="btn btn-black">Оформить заявку</button>
                         </div>
 
                         <p class="form__desc">Вы можете загрузить не более 5 документов в форматах: doc, docx, xls, xlsx, pdf, txt, png, jpeg</p>
@@ -64,7 +96,7 @@
             </div>
         </div>
 
-        <div class="main__item active" data-tab="graphics">
+        <div class="main__item" data-tab="graphics">
             <h2>Графики вывоза ТКО</h2>
 
             <div class="main__files">
@@ -152,6 +184,8 @@
         </div>
 
         <div class="main__item" data-tab="documents">
+            <h2>Документы</h2>
+
             <div class="main__files">
                 <a href="docs/inn.pdf" target="_blank" class="main__file">
                     <img src="img/pdf.svg" alt="">
@@ -167,6 +201,45 @@
                 </a>
             </div>
         </div>
+
+        <div class="main__item" data-tab="contacts">
+            <div class="col">
+                <p><strong>Юридический адрес:</strong></p>
+                <p>614107, Пермский край, г. Пермь, ул. Вагановых, 11а, офис 206 Б</p>
+
+                <img src="img/map.jpg" alt="">
+
+                <div class="addr">
+                    <a href="tel:+73422110959" class="tel">+7 (342) 211-09-59</a>
+                    <a href="mailto:astrong.perm@gmail.com">astrong.perm@gmail.com</a>
+                </div>
+            </div>
+            <div class="col">
+                <p><strong>Структурное подразделение:</strong></p>
+                <p>617475, Пермский край, г. Кунгур, Плехановский тракт, 4 км</p>
+
+                <img src="img/map-2.jpg" alt="">
+                <div class="addr">
+                    <a href="tel:+73427127208" class="tel">+7 (34271) 2-72-08</a>
+                    <a href="mailto:astrong.kungur@gmail.com">astrong.kungur@gmail.com</a>
+                </div>
+            </div>
+
+            <form action="" class="questions">
+                <div class="container">
+                    <h2>остались вопросы? <strong>оставьте заявку и мы вам перезвоним!</strong></h2>
+
+                    <div class="flex">
+                        <input type="text" required name="name" placeholder="Ваше имя">
+                        <input type="text" required name="phone" placeholder="Ваш телефон">
+                        <input type="hidden" name="hide" value="questions">
+                        <button type="submit">Оставить заявку</button>
+                    </div>
+
+                    <p>Нажимая кнопку «Оставить заявку», Вы соглашаетесь <a href="javascript:void(0)">с условиями обработки и хранения персональных данных</a></p>
+                </div>
+            </form>
+        </div>
     </section>
 </div>
 
@@ -179,6 +252,16 @@
         <div><a href="mailto:astrong.kungur@gmail.com">astrong.kungur@gmail.com</a></div>
     </div>
 </footer>
+
+<div class="modals">
+    <div class="modal success">
+        <div class="modal__body">
+            <img src="img/checked.svg" alt="">
+            <p>Ваша заявка принята!</p>
+        </div>
+        <a href="javascript:void(0)" class="btn close">Закрыть</a>
+    </div>
+</div>
 
 <!-- END CONTENT  -->
 //= template/footer.html
