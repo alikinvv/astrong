@@ -38,6 +38,17 @@ h2 {
 	margin: 0 0 20px;
 }
 
+h3 {
+	@include r(767) {
+		font-size: 16px;
+	}
+
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 20px;
+	text-transform: uppercase;
+}
+
 input {
 	background: #fff;
 	font-size: 16px;
@@ -798,5 +809,63 @@ textarea {
 		margin: 0;
 		pointer-events: none;
 		user-select: none;
+	}
+}
+
+.files-block {
+	padding: 30px 51px;
+	max-height: 500px;
+	overflow: auto;
+
+	&.error {
+		color: red;
+
+		.delete {
+			&::before,
+			&::after {
+				background: red;
+			}
+		}
+	}
+
+	&-item {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		margin-bottom: 10px;
+
+		&:hover {
+			.delete::before,
+			.delete::after {
+				background: red;
+			}
+		}
+	}
+
+	.delete	{
+		width: 30px;
+		height: 30px;
+		position: relative;
+		margin-right: 10px;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			top: 14px;
+			left: 0px;
+			width: 100%;
+			height: 2px;
+			background: #424242;
+			transition: all .2s ease-in-out;
+		}
+
+		&::after {
+			transform: rotate(-45deg);
+		}
+
+		&::before {
+			transform: rotate(45deg);
+		}
 	}
 }

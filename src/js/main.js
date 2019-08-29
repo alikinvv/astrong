@@ -3,6 +3,8 @@ $('body').on('click' , '.navigation a[data-tab]', (e) => {
     $(e.currentTarget).addClass('active');
     $(`.main__item`).removeClass('active');
     $(`.main__item[data-tab="${$(e.currentTarget).attr('data-tab')}"]`).addClass('active');
+    $('.files-block').remove();
+    $('input[type="file"]').val('');
 });
 
 $('body').on('click' , '.form__nav a[data-form]', (e) => {
@@ -10,6 +12,8 @@ $('body').on('click' , '.form__nav a[data-form]', (e) => {
     $(e.currentTarget).addClass('active');
     $(`.form__body`).removeClass('active');
     $(`.form__body[data-form="${$(e.currentTarget).attr('data-form')}"]`).addClass('active');
+    $('.files-block').remove();
+    $('input[type="file"]').val('');
 });
 
 if ($(window).width() >= 768) {
@@ -30,7 +34,7 @@ $('body').on('submit', 'form', (e) => {
         form = document.querySelector('form.uri');
         fd = new FormData(form);
 
-        if ($('.uri input[name="organization"]').val() !== '' && $('.uri input[name="address"]').val() !== '' && $('.uri input[name="inn"]').val() !== '' && $('.uri input[name="phone"]').val() !== '' && $('.uri input[name="email"]').val() !== '') {
+        if ($('.uri input[name="organization"]').val() !== '' && $('.uri input[name="address"]').val() !== '' && $('.uri input[name="inn"]').val() !== '' && $('.uri input[name="phone"]').val() !== '' && $('.uri input[name="email"]').val() !== '' && $('.files-block-item').length <= 5) {
             $.ajax({
                 type: "POST",
                 url: "../form.php",
@@ -43,6 +47,7 @@ $('body').on('submit', 'form', (e) => {
                     $('.modal.success').addClass('active');
                     $('input').val('');
                     $('textarea').val('');
+                    $('.files-block').remove();
                 }
             });
         } else {
@@ -65,12 +70,18 @@ $('body').on('submit', 'form', (e) => {
             if ($('.uri input[name="email"]').val() === '') {
                 $('.uri input[name="email"]').addClass('error');
             }
+
+            if ($('.files-block-item').length > 5) {
+                $('.files-block').addClass('error');
+            }
         }
     } else if ($(e.currentTarget).hasClass('phy')) {
         form = document.querySelector('form.phy');
         fd = new FormData(form);
 
-        if ($('.phy input[name="fio"]').val() !== '' && $('.phy input[name="address"]').val() !== '' && $('.phy input[name="phone"]').val() !== '' && $('.phy input[name="email"]').val() !== '') {
+        console.log(...fd)
+
+        if ($('.phy input[name="fio"]').val() !== '' && $('.phy input[name="address"]').val() !== '' && $('.phy input[name="phone"]').val() !== '' && $('.phy input[name="email"]').val() !== '' && $('.files-block-item').length <= 5) {
             $.ajax({
                 type: "POST",
                 url: "../form.php",
@@ -83,6 +94,7 @@ $('body').on('submit', 'form', (e) => {
                     $('.modal.success').addClass('active');
                     $('input').val('');
                     $('textarea').val('');
+                    $('.files-block').remove();
                 }					
             });
         } else {
@@ -101,6 +113,10 @@ $('body').on('submit', 'form', (e) => {
             if ($('.phy input[name="email"]').val() === '') {
                 $('.phy input[name="email"]').addClass('error');
             }
+
+            if ($('.files-block-item').length > 5) {
+                $('.files-block').addClass('error');
+            }
         }
     } else {
         $.ajax({
@@ -113,6 +129,7 @@ $('body').on('submit', 'form', (e) => {
                 $('.modal.success').addClass('active');
                 $('input').val('');
                 $('textarea').val('');
+                $('.files-block').remove();
             }
         });
     }
@@ -127,4 +144,28 @@ $('input[name="phone"]').mask('+0 (000) 000-00-00', {placeholder: 'Телефо�
 $('body').on('click', '.modal .close', (e) => {
     $('.modals').removeClass('active');
     $('.modal').removeClass('active');
+});
+
+let currentInput = null;
+
+$('body').on('change', 'input[type="file"]', (e) => {
+    currentInput = $(e.currentTarget.files);
+
+    if ($('.files-block').length === 0) {
+        $(e.currentTarget).closest('.main__item').append('<div class="files-block"><h3>Вы загрузили следующие документы:</h3></div>')
+    }
+
+    for (var i = 0; i < $(e.currentTarget.files).length; i++) {
+        $(e.currentTarget).closest('.main__item').find('.files-block').append(`<div class="files-block-item" data-index="${i}"><div class="delete"></div><span>${$(e.currentTarget.files)[i].name}</span></div>`);
+    }
+});
+
+$('body').on('click', '.files-block-item', (e) => {
+    currentInput.splice($(e.currentTarget).attr('data-index'), 1);
+    $(e.currentTarget).remove();
+    $('.files-block').removeClass('error');
+
+    if ($('.files-block-item').length === 0) {
+        $('.files-block').remove();
+    }
 });

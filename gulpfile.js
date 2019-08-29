@@ -23,7 +23,7 @@ gulp.task('css', function() {
             browsers: ['last 10 versions'],
             cascade: false
         }))
-        .pipe(gp.csso())
+        //.pipe(gp.csso())
         .pipe(gp.sourcemaps.write())
         .pipe(gulp.dest('build/css'))
         .on("error", gp.notify.onError({
